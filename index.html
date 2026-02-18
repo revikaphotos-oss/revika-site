@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revika Photos</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f5f7;
+    text-align: center;
+    color: #333;
+}
+
+header {
+    background-color: #e6c1cf;
+    padding: 40px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+h2 {
+    margin-top: 50px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 40px 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 250px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.price {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+select, input {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    width: 250px;
+}
+
+button {
+    background-color: #ff7eb3;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ff5c9a;
+}
+
+.footer {
+    margin-top: 60px;
+    padding: 20px;
+    background-color: #e6c1cf;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Revika Photos 🤍</h1>
+    <p>Transformando momentos em memórias eternas 📸</p>
+</header>
+
+<h2>Nossos Kits 💕</h2>
+
+<div class="container">
+
+    <div class="card">
+        <img src="foto1.png">
+        <h3>4 Fotos</h3>
+        <p>7,2cm x 8,6cm</p>
+        <div class="price">R$20,00</div>
+    </div>
+
+    <div class="card">
+        <img src="foto2.png">
+        <h3>6 Fotos</h3>
+        <p>6,2cm x 6,2cm</p>
+        <div class="price">R$25,00</div>
+    </div>
+
+    <div class="card">
+        <img src="foto3.png">
+        <h3>9 Fotos</h3>
+        <p>5,0cm x 7,0cm</p>
+        <div class="price">R$15,00</div>
+    </div>
+
+</div>
+
+<h2>Faça seu pedido 💌</h2>
+
+<select id="kit">
+    <option value="20">4 Fotos - R$20</option>
+    <option value="25">6 Fotos - R$25</option>
+    <option value="15">9 Fotos - R$15</option>
+</select>
+
+<br>
+
+<input type="number" id="quantidade" placeholder="Quantidade">
+
+<br>
+
+<input type="text" id="drive" placeholder="Link do Drive com as fotos">
+
+<br>
+
+<select id="entrega">
+    <option value="0">Retirada - Grátis</option>
+    <option value="10">Entrega - R$10</option>
+</select>
+
+<br><br>
+
+<button onclick="enviarPedido()">Finalizar Pedido no WhatsApp</button>
+
+<div class="footer">
+    <p>Instagram: @revika.photos</p>
+</div>
+
+<script>
+function enviarPedido() {
+    var kit = document.getElementById("kit");
+    var kitTexto = kit.options[kit.selectedIndex].text;
+    var valorKit = parseFloat(kit.value);
+
+    var quantidade = parseInt(document.getElementById("quantidade").value);
+    var drive = document.getElementById("drive").value;
+
+    var entrega = document.getElementById("entrega");
+    var entregaTexto = entrega.options[entrega.selectedIndex].text;
+    var valorEntrega = parseFloat(entrega.value);
+
+    if (!quantidade || quantidade <= 0) {
+        alert("Coloque a quantidade 💕");
+        return;
+    }
+
+    var total = (valorKit * quantidade) + valorEntrega;
+
+    var mensagem = "Olá! Quero fazer um pedido:%0A%0A";
+    mensagem += "Kit: " + kitTexto + "%0A";
+    mensagem += "Quantidade: " + quantidade + "%0A";
+    mensagem += "Entrega: " + entregaTexto + "%0A";
+    mensagem += "Link Drive: " + drive + "%0A%0A";
+    mensagem += "Total: R$" + total.toFixed(2);
+
+    var telefone = "5511984777932";
+
+    window.open("https://wa.me/" + telefone + "?text=" + mensagem);
+}
+</script>
+
+</body>
+</html>
+
