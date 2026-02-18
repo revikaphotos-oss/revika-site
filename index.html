@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Revika Photos</title>
+<title>Revika Photos 🤍</title>
 
 <style>
 body {
@@ -24,11 +24,6 @@ header h1 {
     font-size: 42px;
 }
 
-header p {
-    margin-top: 10px;
-    font-size: 18px;
-}
-
 h2 {
     margin-top: 50px;
 }
@@ -47,11 +42,6 @@ h2 {
     border-radius: 20px;
     width: 250px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
 }
 
 .card img {
@@ -70,7 +60,7 @@ select, input {
     margin: 10px;
     border-radius: 10px;
     border: 1px solid #ddd;
-    width: 250px;
+    width: 260px;
 }
 
 button {
@@ -81,7 +71,6 @@ button {
     border-radius: 25px;
     cursor: pointer;
     font-size: 16px;
-    transition: 0.3s;
 }
 
 button:hover {
@@ -103,29 +92,28 @@ button:hover {
     <p>Transformando momentos em memórias eternas 📸</p>
 </header>
 
-<h2>Nossos Kits 💕</h2>
+<h2>Nossos Tamanhos 💕</h2>
 
 <div class="container">
 
     <div class="card">
         <img src="foto1.png">
-        <h3>4 Fotos</h3>
-        <p>7,2cm x 8,6cm</p>
-        <div class="price">R$20,00</div>
+        <h3>Foto 5 x 7 cm</h3>
+        <p>Pacote com 9 unidades</p>
+        <div class="price">R$15,00</div>
     </div>
 
     <div class="card">
         <img src="foto2.png">
-        <h3>6 Fotos</h3>
-        <p>6,2cm x 6,2cm</p>
-        <div class="price">R$25,00</div>
+        <h3>Outro Tamanho</h3>
+        <p>(mantido conforme anterior)</p>
     </div>
 
     <div class="card">
         <img src="foto3.png">
-        <h3>9 Fotos</h3>
-        <p>5,0cm x 7,0cm</p>
-        <div class="price">R$15,00</div>
+        <h3>Foto 7,2 x 8,6 cm</h3>
+        <p>Pacote com 4 unidades</p>
+        <div class="price">R$20,00</div>
     </div>
 
 </div>
@@ -133,9 +121,8 @@ button:hover {
 <h2>Faça seu pedido 💌</h2>
 
 <select id="kit">
-    <option value="20">4 Fotos - R$20</option>
-    <option value="25">6 Fotos - R$25</option>
-    <option value="15">9 Fotos - R$15</option>
+    <option value="15">5x7 cm – 9 fotos – R$15</option>
+    <option value="20">7,2x8,6 cm – 4 fotos – R$20</option>
 </select>
 
 <br>
@@ -149,8 +136,9 @@ button:hover {
 <br>
 
 <select id="entrega">
-    <option value="0">Retirada - Grátis</option>
-    <option value="10">Entrega - R$10</option>
+    <option value="0">Barueri – Frete Grátis</option>
+    <option value="0">Outras cidades – Valor conforme distância</option>
+    <option value="0">Outro estado – Correios (valor após cálculo)</option>
 </select>
 
 <br><br>
@@ -158,7 +146,7 @@ button:hover {
 <button onclick="enviarPedido()">Finalizar Pedido no WhatsApp</button>
 
 <div class="footer">
-    <p>Instagram: @revika.photos</p>
+    <p>@revika.photos 💕</p>
 </div>
 
 <script>
@@ -172,21 +160,20 @@ function enviarPedido() {
 
     var entrega = document.getElementById("entrega");
     var entregaTexto = entrega.options[entrega.selectedIndex].text;
-    var valorEntrega = parseFloat(entrega.value);
 
     if (!quantidade || quantidade <= 0) {
         alert("Coloque a quantidade 💕");
         return;
     }
 
-    var total = (valorKit * quantidade) + valorEntrega;
+    var total = valorKit * quantidade;
 
     var mensagem = "Olá! Quero fazer um pedido:%0A%0A";
     mensagem += "Kit: " + kitTexto + "%0A";
     mensagem += "Quantidade: " + quantidade + "%0A";
     mensagem += "Entrega: " + entregaTexto + "%0A";
     mensagem += "Link Drive: " + drive + "%0A%0A";
-    mensagem += "Total: R$" + total.toFixed(2);
+    mensagem += "Total (sem frete se aplicável): R$" + total.toFixed(2);
 
     var telefone = "5511984777932";
 
@@ -196,4 +183,3 @@ function enviarPedido() {
 
 </body>
 </html>
-
